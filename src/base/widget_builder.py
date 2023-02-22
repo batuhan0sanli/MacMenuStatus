@@ -32,6 +32,7 @@ class WidgetBuilder(ABC):
         pass
 
     def update(self) -> 'WidgetBuilder':
+        print('Updating {}'.format(self.name))
         if not self.ready:
             return self
 
