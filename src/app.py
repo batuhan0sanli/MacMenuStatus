@@ -1,10 +1,11 @@
 from rumps import App, Timer, separator
 from static.emoji import Emoji
 from src.menus import widgets_obj
+from src.base.widgets import Widgets
 
 
 class MacMenuStatus(App):
-    def __init__(self, widgets):
+    def __init__(self, widgets: 'Widgets'):
         super(MacMenuStatus, self).__init__(name="MacMenuStatus", title=Emoji.hollow_red_circle)
         self.widgets = widgets
         self._add_menu_items()
