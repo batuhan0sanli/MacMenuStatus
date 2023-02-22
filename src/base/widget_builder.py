@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from src.base.status import Status
+from rumps import MenuItem
 
 
 class WidgetBuilder(ABC):
@@ -31,7 +32,7 @@ class WidgetBuilder(ABC):
     def _check(self) -> Status:
         pass
 
-    def update(self) -> 'WidgetBuilder':
+    def update(self, _=None) -> 'WidgetBuilder':
         print('Updating {}'.format(self.name))
         if not self.ready:
             return self
@@ -42,6 +43,10 @@ class WidgetBuilder(ABC):
         except Exception as e:
             self.status = Status.widget_error(str(e))
         return self
+
+    @property
+    def menu_item(self) -> MenuItem:
+        return MenuItem(title = "{}: {}".format(self.status.widget_status.value, self.name), callback=self.update)
 
     # @abstractmethod
     # def alert(self):  # add send_alert for widgets
