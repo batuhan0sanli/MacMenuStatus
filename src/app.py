@@ -1,4 +1,4 @@
-from rumps import App, Timer, separator
+from rumps import App, MenuItem, Timer, separator, quit_application
 
 from src.base import Widgets
 from src.config import Config
@@ -16,7 +16,7 @@ class MacMenuStatus(App):
         for widget in self.widgets:
             self.menu.add(widget.menu_item)
         self.menu.add(separator)
-        # self.menu.add("Quit", callback=self.quit)
+        self.menu.add(MenuItem(title="Quit", callback=quit_application))
 
     def _update_title(self, _):
         self.widgets.update()
