@@ -44,7 +44,7 @@ class WidgetBuilder(ABC):
             self.status = Status.widget_error(str(e))
         return self
 
-    def callback(self):
+    def callback(self, _=None):
         """
         This method is called when the widget is clicked. If you want to do something when the widget is clicked,
         override this method.
