@@ -1,10 +1,10 @@
 from typing import List
-from .widget_builder import WidgetBuilder
+from .widget_builder import Widget
 from .status import StatusTypes
 
 
 class Widgets:
-    widget_list: List['WidgetBuilder'] = []
+    widget_list: List['Widget'] = []
     menubar_status: StatusTypes = StatusTypes.UNKNOWN
     _instances = None
 
@@ -13,13 +13,13 @@ class Widgets:
             cls._instances = super(Widgets, cls).__new__(cls)
         return cls._instances
 
-    def add(self, widget: WidgetBuilder):
+    def add(self, widget: Widget):
         self.widget_list.append(widget)
 
-    def remove(self, widget: WidgetBuilder):
+    def remove(self, widget: Widget):
         self.widget_list.remove(widget)
 
-    def get(self, name: str) -> WidgetBuilder | None:
+    def get(self, name: str) -> Widget | None:
         for widget in self.widget_list:
             if widget.name == name:
                 return widget
