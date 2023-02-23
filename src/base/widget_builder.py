@@ -15,7 +15,7 @@ class WidgetBuilder(ABC):
             settings: dict = None,
     ):
         self.name = name or self.name
-        self.settings |= settings or {}
+        self.settings = self.settings | (settings or {})
         self.ready = self._check_settings()
 
     def _check_settings(self) -> bool:
