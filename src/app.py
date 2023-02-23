@@ -1,6 +1,7 @@
 from rumps import App, Timer, separator
+from config import config
 from static.emoji import Emoji
-from src.menus import widgets_obj
+from src.widget_builder import WidgetBuilder
 from src.base.widgets import Widgets
 
 
@@ -28,5 +29,6 @@ class MacMenuStatus(App):
 
 
 if __name__ == "__main__":
-    app = MacMenuStatus(widgets_obj)
+    builded_widgets = WidgetBuilder(config).builded_widgets
+    app = MacMenuStatus(builded_widgets)
     app.run()
