@@ -53,7 +53,7 @@ class WidgetBuilder(ABC):
 
     @property
     def menu_item(self) -> MenuItem:
-        return MenuItem(title = "{}: {}".format(self.status.widget_status.value, self.name), callback=self.callback)
+        return MenuItem(title="{}: {}".format(self.status.widget_status.value, self.name), callback=self.callback)
 
     # @abstractmethod
     # def alert(self):  # add send_alert for widgets
