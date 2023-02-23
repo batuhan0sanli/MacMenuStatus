@@ -1,7 +1,6 @@
 from rumps import App, Timer, separator
 from src.config import Config
 from static.emoji import Emoji
-from src.widget_builder import WidgetBuilder
 from src.base.widgets import Widgets
 
 
