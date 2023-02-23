@@ -1,7 +1,8 @@
 from rumps import App, Timer, separator
+
+from src.base import Widgets
 from src.config import Config
 from static.emoji import Emoji
-from src.base import Widgets
 
 
 class MacMenuStatus(App):

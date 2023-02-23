@@ -1,6 +1,5 @@
 from .check_dns import CheckDNS
 
-
 widget_list = {
     'check_dns': CheckDNS,
 }

@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
-from src.base.status import Status
+
 from rumps import MenuItem
+
+from src.base.status import Status
 
 
 class BaseWidget(ABC):
@@ -24,7 +26,8 @@ class BaseWidget(ABC):
                 self.status = Status.widget_error('Missing setting "{}" for {} widget'.format(key, self.name))
                 return False
             if not isinstance(self.settings[key], value):
-                self.status = Status.widget_error('Setting "{}" for {} widget must be of type {}'.format(key, self.name, value.__name__))
+                self.status = Status.widget_error(
+                    'Setting "{}" for {} widget must be of type {}'.format(key, self.name, value.__name__))
                 return False
         return True
 

@@ -1,4 +1,5 @@
 from typing import List
+
 from .base_widget import BaseWidget
 from .status import StatusTypes
 
