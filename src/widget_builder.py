@@ -1,6 +1,6 @@
-from config import Config
+from src.config import Config
 from src.base.widgets import Widgets
-from widgets import widget_list
+from src.widgets import widget_list
 
 __all__ = ['WidgetBuilder']
 

@@ -1,12 +1,12 @@
 from rumps import App, Timer, separator
-from config import config
+from src.config import Config
 from static.emoji import Emoji
 from src.widget_builder import WidgetBuilder
 from src.base.widgets import Widgets
 
 
 class MacMenuStatus(App):
-    def __init__(self, widgets: 'Widgets'):
+    def __init__(self, config: 'Config', widgets: 'Widgets'):
         super(MacMenuStatus, self).__init__(name="MacMenuStatus", title=Emoji.hollow_red_circle)
         self.widgets = widgets
         self._add_menu_items()
@@ -26,9 +26,3 @@ class MacMenuStatus(App):
     def run(self):
         Timer(self._update_title, 10).start()
         super(MacMenuStatus, self).run()
-
-
-if __name__ == "__main__":
-    widgets = WidgetBuilder(config).build()
-    app = MacMenuStatus(widgets)
-    app.run()

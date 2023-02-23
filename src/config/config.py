@@ -21,6 +21,3 @@ class Config:
     def load(self):
         with open(self.path) as file:
             self._config = yaml.load(file, Loader=yaml.FullLoader)
-
-
-config = Config()
