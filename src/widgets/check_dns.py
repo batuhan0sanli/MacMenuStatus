@@ -1,9 +1,9 @@
 import os
 from src.base.status import Status
-from src.base.widget_builder import Widget
+from src.base.base_widget import BaseWidget
 
 
-class CheckDNS(Widget):
+class CheckDNS(BaseWidget):
     name = "Check DNS"
     settings = {'network': 'Wi-Fi'}
     settings_schema = {

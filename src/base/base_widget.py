@@ -3,7 +3,7 @@ from src.base.status import Status
 from rumps import MenuItem
 
 
-class Widget(ABC):
+class BaseWidget(ABC):
     name: str
     settings: dict = {}
     settings_schema: dict = {}
@@ -32,7 +32,7 @@ class Widget(ABC):
     def _check(self) -> Status:
         pass
 
-    def update(self, _=None) -> 'Widget':
+    def update(self, _=None) -> 'BaseWidget':
         print('Updating {}'.format(self.name))
         if not self.ready:
             return self
