@@ -44,9 +44,16 @@ class WidgetBuilder(ABC):
             self.status = Status.widget_error(str(e))
         return self
 
+    def callback(self):
+        """
+        This method is called when the widget is clicked. If you want to do something when the widget is clicked,
+        override this method.
+        """
+        return self.update()
+
     @property
     def menu_item(self) -> MenuItem:
-        return MenuItem(title = "{}: {}".format(self.status.widget_status.value, self.name), callback=self.update)
+        return MenuItem(title = "{}: {}".format(self.status.widget_status.value, self.name), callback=self.callback)
 
     # @abstractmethod
     # def alert(self):  # add send_alert for widgets
