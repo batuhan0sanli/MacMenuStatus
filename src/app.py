@@ -8,6 +8,7 @@ class MacMenuStatus(App):
     def __init__(self, config: 'Config', widgets: 'Widgets'):
         super(MacMenuStatus, self).__init__(name="MacMenuStatus", title=Emoji.hollow_red_circle)
         self.widgets = widgets
+        self.timer = Timer(self._update_title, config.get('update_interval', 10))
         self._add_menu_items()
 
     def _add_menu_items(self):
@@ -23,5 +24,5 @@ class MacMenuStatus(App):
         self._add_menu_items()
 
     def run(self):
-        Timer(self._update_title, 10).start()
+        self.timer.start()
         super(MacMenuStatus, self).run()

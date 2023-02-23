@@ -1,4 +1,4 @@
-refresh_time: 10
+update_interval: 10
 widgets:
   - Home DNS:
     widget_type: check_dns
