@@ -15,8 +15,8 @@ class Config:
             cls._instance = super(Config, cls).__new__(cls)
         return cls._instance
 
-    def get(self, item):
-        return self._config.get(item, None)
+    def get(self, item, default=None):
+        return self._config.get(item) or default
 
     def load(self):
         with open(self.path) as file:
