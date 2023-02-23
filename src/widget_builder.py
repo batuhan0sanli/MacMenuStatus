@@ -6,15 +6,15 @@ __all__ = ['WidgetBuilder']
 
 
 class WidgetBuilder:
-    _builded_widgets: 'Widgets' = Widgets()
+    _built_widgets: 'Widgets' = Widgets()
 
     def __init__(self, config: 'Config'):
         self._config = config
         self._build()
 
     @property
-    def builded_widgets(self):
-        return self._builded_widgets
+    def built_widgets(self):
+        return self._built_widgets
 
     def _build(self):
         for widget in self._config.get('widgets'):
@@ -24,4 +24,4 @@ class WidgetBuilder:
                 continue
             widget_obj = widget_obj(settings=widget.get('config'))
             widget_obj.name = widget.get('name') or widget_obj.name
-            self._builded_widgets.add(widget_obj)
+            self._built_widgets.add(widget_obj)
