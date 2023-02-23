@@ -10,13 +10,12 @@ class WidgetBuilder:
 
     def __init__(self, config: 'Config'):
         self._config = config
-        self._build()
 
     @property
     def built_widgets(self):
         return self._built_widgets
 
-    def _build(self):
+    def build(self):
         for widget in self._config.get('widgets'):
             widget_obj = widget_list.get(widget.get('widget_type'))
             if not widget_obj:
@@ -25,3 +24,4 @@ class WidgetBuilder:
             widget_obj = widget_obj(settings=widget.get('config'))
             widget_obj.name = widget.get('name') or widget_obj.name
             self._built_widgets.add(widget_obj)
+        return self._built_widgets

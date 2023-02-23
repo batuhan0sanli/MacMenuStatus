@@ -29,6 +29,6 @@ class MacMenuStatus(App):
 
 
 if __name__ == "__main__":
-    builded_widgets = WidgetBuilder(config).built_widgets
-    app = MacMenuStatus(builded_widgets)
+    widgets = WidgetBuilder(config).build()
+    app = MacMenuStatus(widgets)
     app.run()
