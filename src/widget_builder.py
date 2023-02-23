@@ -1,9 +1,8 @@
+from config import config
 from src.base.widgets import Widgets
 from widgets import widget_list
-from config import config
-from widgets.check_dns import CheckDNS
 
-print(config)
+__all__ = ['widgets_obj']
 
 
 widgets_obj = Widgets()
