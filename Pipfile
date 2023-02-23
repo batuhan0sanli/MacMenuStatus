@@ -8,6 +8,15 @@ rumps = "*"
 pyyaml = "*"
 
 [dev-packages]
+py2app = "*"
 
 [requires]
 python_version = "3.11"
+
+[build-system]
+requires = ["setuptools", "wheel", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[scripts]
+start = "python main.py"
+build = "python setup.py py2app"
