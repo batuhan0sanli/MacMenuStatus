@@ -17,14 +17,3 @@ class CheckDNS(BaseWidget):
             return Status.success()
         else:
             return Status.error('DNS is not set to {}'.format(self.settings.get('dns')))
-
-
-if __name__ == "__main__":
-    settings = {
-        "network": "Wi-Fi",
-        "dns": "192.168.1.100",
-    }
-
-    obj = CheckDNS(settings=settings)
-    obj.update()
-    print(obj.status.message)
