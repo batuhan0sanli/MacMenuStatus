@@ -15,6 +15,7 @@ OPTIONS = {
         'LSUIElement': True,
     },
     'includes': ['rumps', 'pyyaml'],
+    'iconfile': 'static/logo.icns',
 }
 
 setup(
