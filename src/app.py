@@ -18,7 +18,7 @@ class MacMenuStatus(App):
         self.menu.add(separator)
         self.menu.add(MenuItem(title="Quit", callback=quit_application))
 
-    def _update_title(self, _):
+    def _update_title(self, _=None):
         self.widgets.update()
         self.title = self.widgets.menubar_status.value
         self.menu.clear()
