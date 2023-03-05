@@ -9,6 +9,7 @@ class MacMenuStatus(App):
     def __init__(self, config: 'Config', widgets: 'Widgets'):
         self.widgets = widgets
         self.timer = Timer(self._update_title, config.get('update_interval', 10))
+        self.icon_timer = None
         super(MacMenuStatus, self).__init__(name="MacMenuStatus", title='', icon=MacMenuStatusIcons.black_logo)
         self._add_menu_items()
 
@@ -20,7 +21,16 @@ class MacMenuStatus(App):
 
     def _update_title(self, _=None):
         self.widgets.update()
-        self.icon = self.widgets.menubar_status.value
+        if self.widgets.menubar_status.name == 'ERROR':
+            if self.icon_timer is None:
+                self.icon_timer = MacMenuStatusIcons.error_flip_flop(self)
+                self.icon_timer.start()
+        else:
+            if self.icon_timer is not None:
+                self.icon_timer.stop()
+                self.icon_timer = None
+            self.icon = self.widgets.menubar_status.value
+
         self.menu.clear()
         self._add_menu_items()
 
