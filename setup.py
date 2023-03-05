@@ -6,9 +6,13 @@ Usage:
 """
 
 from setuptools import setup
+from glob import glob
+
 
 APP = ['main.py']
-DATA_FILES = []
+DATA_FILES = [
+    ('static/mac_menu_status_icons', glob('static/mac_menu_status_icons/*.png'))
+]
 OPTIONS = {
     'argv_emulation': True,
     'plist': {
