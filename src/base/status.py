@@ -1,6 +1,7 @@
 from enum import Enum
 
 from static.emoji import Emoji
+from static.mac_menu_status_icons import MacMenuStatusIcons
 
 
 class StatusTypes(Enum):
@@ -11,6 +12,15 @@ class StatusTypes(Enum):
     UNKNOWN = Emoji.black_circle
     UPDATING = Emoji.white_circle
     WIDGET_ERROR = Emoji.red_circle
+
+
+class MenuBarStatusTypes(Enum):
+    SUCCESS = MacMenuStatusIcons.green_logo
+    ERROR = MacMenuStatusIcons.red_logo
+    WARNING = MacMenuStatusIcons.yellow_logo
+    UNKNOWN = MacMenuStatusIcons.black_logo
+    UPDATING = MacMenuStatusIcons.pending_logo_black
+    WIDGET_ERROR = MacMenuStatusIcons.red_logo
 
 
 class Status:

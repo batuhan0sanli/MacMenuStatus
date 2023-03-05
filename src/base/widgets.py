@@ -1,12 +1,12 @@
 from typing import List
 
 from .base_widget import BaseWidget
-from .status import StatusTypes
+from .status import StatusTypes, MenuBarStatusTypes
 
 
 class Widgets:
     widget_list: List['BaseWidget'] = []
-    menubar_status: StatusTypes = StatusTypes.UNKNOWN
+    menubar_status: MenuBarStatusTypes = MenuBarStatusTypes.UNKNOWN
     _instances = None
 
     def __new__(cls, *args, **kwargs):
@@ -27,18 +27,18 @@ class Widgets:
         return None
 
     def update(self):
-        self.menubar_status = StatusTypes.UPDATING
+        self.menubar_status = MenuBarStatusTypes.UPDATING
         for widget in self.widget_list:
             widget.update()
         self.menubar_status = self._get_menubar_status()
 
-    def _get_menubar_status(self) -> StatusTypes:
+    def _get_menubar_status(self) -> MenuBarStatusTypes:
         for widget in self.widget_list:
             if widget.status.widget_status == StatusTypes.ERROR:
-                return StatusTypes.ERROR
+                return MenuBarStatusTypes.ERROR
             if widget.status.widget_status == StatusTypes.WARNING:
-                return StatusTypes.WARNING
-        return StatusTypes.SUCCESS
+                return MenuBarStatusTypes.WARNING
+        return MenuBarStatusTypes.SUCCESS
 
     def __iter__(self):
         return iter(self.widget_list)
