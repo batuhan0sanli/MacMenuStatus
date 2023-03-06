@@ -60,7 +60,7 @@ pipenv run build
 
 ## License
 
-[MIT](LICENSE)
+[GPL-3.0 License](LICENSE.md)
 
 ## Contributing
 
