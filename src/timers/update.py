@@ -1,15 +1,10 @@
-from rumps import Timer, MenuItem, separator, quit_application
+from rumps import MenuItem, separator, quit_application
 
-import src.app as app
+from src.base import BaseTimer
 from src.timers.error_flip_flop import ErrorFlipFlop
 
 
-class UpdateTimer:
-    def __init__(self, sender: 'app.MacMenuStatus', interval: float):
-        self.sender = sender
-        self.interval = interval
-        self._timer = Timer(self._callback, self.interval)
-
+class UpdateTimer(BaseTimer):
     def _callback(self, _=None):
         self.sender.widgets.update()
         self.update_flip_flop()
@@ -32,12 +27,3 @@ class UpdateTimer:
                 self.sender.icon_timer.stop()
                 self.sender.icon_timer = None
             self.sender.icon = self.sender.widgets.menubar_status.value
-
-    def start(self):
-        self._timer.start()
-
-    def stop(self):
-        self._timer.stop()
-
-    def __del__(self):
-        self.stop()
