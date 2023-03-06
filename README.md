@@ -7,7 +7,7 @@
 
 ![Screenshot](static/screenshot.png)
 
-MacMenuStatus is a simple app that displays the current status of the your widgets in the menu bar.
+MacMenuStatus is a simple menu bar app for macOS that shows widgets status in the menu bar.
 
 Green means everything is working, red means something is wrong. It's very simple!
 
