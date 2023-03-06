@@ -10,16 +10,26 @@ from glob import glob
 
 
 APP = ['main.py']
+APP_NAME = 'MacMenuStatus'
+APP_VERSION = '0.0.1'
 DATA_FILES = [
     ('static/app_icons', glob('static/app_icons/*.png'))
 ]
 OPTIONS = {
     'argv_emulation': True,
-    'plist': {
-        'LSUIElement': True,
-    },
     'includes': ['rumps', 'pyyaml'],
     'iconfile': 'static/logo.icns',
+    'plist': {
+        'LSUIElement': True,
+        'CFBundleName': APP_NAME,
+        'CFBundleDisplayName': APP_NAME,
+        'CFBundleIdentifier': "com.app.MacMenuStatus",
+        'CFBundleVersion': APP_VERSION,
+        'CFBundleShortVersionString': APP_VERSION,
+        'NSHumanReadableCopyright': "Copyright © 2023, Batuhan Şanlı",
+        'CFBundleGetInfoString': "MacMenuStatus {}, Copyright © 2023, Batuhan Şanlı".format(APP_VERSION),
+    }
+
 }
 
 setup(
