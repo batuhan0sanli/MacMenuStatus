@@ -1,13 +1,15 @@
 # MacMenuStatus
 
+![Logo](static/logo256.png)
+
 [![GitHub release](https://img.shields.io/github/release/batuhan0sanli/MacMenuStatus)](https://github.com/batuhan0sanli/MacMenuStatus/releases)
 [![GitHub license](https://img.shields.io/github/license/batuhan0sanli/MacMenuStatus)](https://github.com/batuhan0sanli/MacMenuStatus/blob/main/LICENSE.md)
 
 ---
 
-![Screenshot](static/screenshot.png)
-
 MacMenuStatus is a simple menu bar app for macOS that shows widgets status in the menu bar.
+
+![Screenshot](static/screenshot.png)
 
 Green means everything is working, red means something is wrong. It's very simple!
 
