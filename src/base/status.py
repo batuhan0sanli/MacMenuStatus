@@ -12,22 +12,22 @@ class WidgetStatusTypes(Enum):
     UPDATING = Emoji.white_circle
     WIDGET_ERROR = Emoji.red_circle
 
-    def to_global(self) -> 'MenuBarStatusTypes':
+    def to_global(self) -> 'GlobalStatusTypes':
         if self == WidgetStatusTypes.SUCCESS:
-            return MenuBarStatusTypes.SUCCESS
+            return GlobalStatusTypes.SUCCESS
         if self == WidgetStatusTypes.ERROR:
-            return MenuBarStatusTypes.ERROR
+            return GlobalStatusTypes.ERROR
         if self == WidgetStatusTypes.WARNING:
-            return MenuBarStatusTypes.WARNING
+            return GlobalStatusTypes.WARNING
         if self == WidgetStatusTypes.UNKNOWN:
-            return MenuBarStatusTypes.UNKNOWN
+            return GlobalStatusTypes.UNKNOWN
         if self == WidgetStatusTypes.UPDATING:
-            return MenuBarStatusTypes.UPDATING
+            return GlobalStatusTypes.UPDATING
         if self == WidgetStatusTypes.WIDGET_ERROR:
-            return MenuBarStatusTypes.ERROR
+            return GlobalStatusTypes.ERROR
 
 
-class MenuBarStatusTypes(Enum):
+class GlobalStatusTypes(Enum):
     """Status of the menu bar."""
     SUCCESS = AppIcons.green_logo
     ERROR = AppIcons.red_logo
@@ -40,11 +40,11 @@ class Status:
     def __init__(
             self,
             widget_status: 'WidgetStatusTypes' = WidgetStatusTypes.UNKNOWN,
-            menubar_status: 'MenuBarStatusTypes' = MenuBarStatusTypes.UNKNOWN,
+            global_status: 'GlobalStatusTypes' = GlobalStatusTypes.UNKNOWN,
             message: str = None,
     ):
         self.widget_status = widget_status
-        self.menubar_status = menubar_status or widget_status.to_global()
+        self.global_status = global_status or widget_status.to_global()
         self.message = message
 
     def __str__(self):
@@ -52,24 +52,24 @@ class Status:
 
     @staticmethod
     def success(message: str = None) -> 'Status':
-        return Status(WidgetStatusTypes.SUCCESS, MenuBarStatusTypes.SUCCESS, message)
+        return Status(WidgetStatusTypes.SUCCESS, GlobalStatusTypes.SUCCESS, message)
 
     @staticmethod
     def error(message: str = None) -> 'Status':
-        return Status(WidgetStatusTypes.ERROR, MenuBarStatusTypes.ERROR, message)
+        return Status(WidgetStatusTypes.ERROR, GlobalStatusTypes.ERROR, message)
 
     @staticmethod
     def warning(message: str = None) -> 'Status':
-        return Status(WidgetStatusTypes.WARNING, MenuBarStatusTypes.WARNING, message)
+        return Status(WidgetStatusTypes.WARNING, GlobalStatusTypes.WARNING, message)
 
     @staticmethod
     def unknown(message: str = None) -> 'Status':
-        return Status(WidgetStatusTypes.UNKNOWN, MenuBarStatusTypes.UNKNOWN, message)
+        return Status(WidgetStatusTypes.UNKNOWN, GlobalStatusTypes.UNKNOWN, message)
 
     @staticmethod
     def updating(message: str = None) -> 'Status':
-        return Status(WidgetStatusTypes.UPDATING, MenuBarStatusTypes.UPDATING, message)
+        return Status(WidgetStatusTypes.UPDATING, GlobalStatusTypes.UPDATING, message)
 
     @staticmethod
-    def widget_error(message: str = None) -> 'Status':
-        return Status(WidgetStatusTypes.WIDGET_ERROR, MenuBarStatusTypes.WARNING, 'Widget Error: {}'.format(message))
+    def widget_error(message: str = 'Not defined error message!') -> 'Status':
+        return Status(WidgetStatusTypes.WIDGET_ERROR, GlobalStatusTypes.WARNING, 'Widget Error: {}'.format(message))

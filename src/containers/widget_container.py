@@ -1,13 +1,13 @@
 from typing import Dict
 
 from src.base import BaseWidget
-from src.base.status import WidgetStatusTypes, MenuBarStatusTypes
+from src.base.status import WidgetStatusTypes, GlobalStatusTypes
 
 
 class WidgetContainer:
     def __init__(self, _=None):
         self._widgets: Dict[str, BaseWidget] = dict()
-        self._global_status = MenuBarStatusTypes.UNKNOWN
+        self._global_status = GlobalStatusTypes.UNKNOWN
 
     @property
     def global_status(self):
@@ -25,18 +25,18 @@ class WidgetContainer:
         return self._widgets.get(name)
 
     def update(self):
-        self._global_status = MenuBarStatusTypes.UPDATING
+        self._global_status = GlobalStatusTypes.UPDATING
         for widget in self._widgets.values():
             widget.update()
         self._global_status = self._get_global_status()
 
-    def _get_global_status(self) -> MenuBarStatusTypes:
+    def _get_global_status(self) -> GlobalStatusTypes:
         for widget in self._widgets.values():
-            if widget.status.menubar_status == MenuBarStatusTypes.ERROR:
-                return MenuBarStatusTypes.ERROR
-            if widget.status.menubar_status == MenuBarStatusTypes.WARNING:
-                return MenuBarStatusTypes.WARNING
-        return MenuBarStatusTypes.SUCCESS
+            if widget.status.global_status == GlobalStatusTypes.ERROR:
+                return GlobalStatusTypes.ERROR
+            if widget.status.global_status == GlobalStatusTypes.WARNING:
+                return GlobalStatusTypes.WARNING
+        return GlobalStatusTypes.SUCCESS
 
     def __iter__(self):
         return iter(self._widgets.values())
