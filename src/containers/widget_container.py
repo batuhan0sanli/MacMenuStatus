@@ -1,7 +1,7 @@
 from typing import Dict
 
 from src.base import BaseWidget
-from src.base.status import StatusTypes, MenuBarStatusTypes
+from src.base.status import WidgetStatusTypes, MenuBarStatusTypes
 
 
 class WidgetContainer:
@@ -32,9 +32,9 @@ class WidgetContainer:
 
     def _get_global_status(self) -> MenuBarStatusTypes:
         for widget in self._widgets.values():
-            if widget.status.widget_status == StatusTypes.ERROR:
+            if widget.status.menubar_status == MenuBarStatusTypes.ERROR:
                 return MenuBarStatusTypes.ERROR
-            if widget.status.widget_status == StatusTypes.WARNING:
+            if widget.status.menubar_status == MenuBarStatusTypes.WARNING:
                 return MenuBarStatusTypes.WARNING
         return MenuBarStatusTypes.SUCCESS
 
