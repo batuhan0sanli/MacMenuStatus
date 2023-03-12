@@ -1,4 +1,3 @@
-import src.app as app
 from src.base import BaseContainerBuilder
 from src.containers import WidgetContainer
 from src.widgets import widget_list

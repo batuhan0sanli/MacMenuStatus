@@ -1,4 +1,4 @@
-from src.base.base_timer import BaseTimer
+from src.base import BaseTimer
 
 
 class TimerContainer:

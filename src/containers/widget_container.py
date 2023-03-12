@@ -1,6 +1,6 @@
 from typing import Dict
 
-from src.base.base_widget import BaseWidget
+from src.base import BaseWidget
 from src.base.status import StatusTypes, MenuBarStatusTypes
 
 

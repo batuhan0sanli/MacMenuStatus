@@ -3,7 +3,7 @@ from rumps import MenuItem, separator, quit_application
 from src.base import BaseTimer
 
 
-class UpdateTimer(BaseTimer):
+class Updater(BaseTimer):
     name = 'Updater'
 
     def _callback(self, _=None):
