@@ -15,7 +15,7 @@ class WidgetBuilder:
     def built_widgets(self):
         return self._built_widgets
 
-    def build(self):
+    def build(self) -> 'Widgets':
         for widget in self._config.get('widgets'):
             widget_obj = widget_list.get(widget.get('widget_type'))
             if not widget_obj:
