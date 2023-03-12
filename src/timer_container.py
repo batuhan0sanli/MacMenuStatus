@@ -24,7 +24,7 @@ class TimerContainer:
             timer.stop()
 
     def __iter__(self):
-        return iter(self._timers)
+        return iter(self._timers.values())
 
     def __getitem__(self, item):
         return self._timers[item]
