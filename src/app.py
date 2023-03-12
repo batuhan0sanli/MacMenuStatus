@@ -1,6 +1,6 @@
 from rumps import App
 
-from src.base import Widgets
+from src.widget_container import WidgetContainer
 from src.config import Config
 from src.timer_container import TimerContainer
 from src.timers import UpdateTimer, ErrorFlipFlop
@@ -8,7 +8,7 @@ from static import AppIcons
 
 
 class MacMenuStatus(App):
-    def __init__(self, config: 'Config', widgets: 'Widgets'):
+    def __init__(self, config: 'Config', widgets: 'WidgetContainer'):
         self.widgets = widgets
         self.config = config
         self.timers = TimerContainer(self)

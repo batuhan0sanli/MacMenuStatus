@@ -1,4 +1,4 @@
-from src.base import Widgets
+from src.widget_container import WidgetContainer
 from src.config import Config
 from src.widgets import widget_list
 
@@ -6,7 +6,7 @@ __all__ = ['WidgetBuilder']
 
 
 class WidgetBuilder:
-    _built_widgets: 'Widgets' = Widgets()
+    _built_widgets: 'Widgets' = WidgetContainer()
 
     def __init__(self, config: 'Config'):
         self._config = config

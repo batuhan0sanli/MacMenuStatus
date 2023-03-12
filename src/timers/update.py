@@ -19,8 +19,8 @@ class UpdateTimer(BaseTimer):
         self.sender.menu.add(MenuItem(title="Quit", callback=quit_application))
 
     def update_flip_flop(self):
-        if self.sender.widgets.menubar_status.name == 'ERROR':
+        if self.sender.widgets.global_status.name == 'ERROR':
             self.sender.timers['ErrorFlipFlop'].start()
         else:
             self.sender.timers['ErrorFlipFlop'].stop()
-            self.sender.icon = self.sender.widgets.menubar_status.value
+            self.sender.icon = self.sender.widgets.global_status.value
