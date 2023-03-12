@@ -17,9 +17,10 @@ class MacMenuStatus(App):
         self._initialize_timers()
 
     def _initialize_timers(self):
-        self.timers.add(UpdateTimer(self, self.config.get('update_interval', 10)))
-        self.timers.add(ErrorFlipFlop(self, 0.5))
+        updater_timer = UpdateTimer(self, self.config.get('update_interval', 10))
+        error_flip_flop_timer = ErrorFlipFlop(self, 0.5)
+        self.timers.add(updater_timer, start=True)
+        self.timers.add(error_flip_flop_timer)
 
     def run(self):
-        self.timers.start()
         super(MacMenuStatus, self).run()

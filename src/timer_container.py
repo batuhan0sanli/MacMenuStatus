@@ -6,12 +6,14 @@ class TimerContainer:
         self._sender = sender
         self._timers = dict()
 
-    def add(self, timer: BaseTimer, name: str = None):
+    def add(self, timer: BaseTimer, name: str = None, start: bool = False):
         if not name:
             name = timer.name or timer.__class__.__name__ + str(id(timer))
         timer.name = name
         timer.sender = self._sender
         self._timers[name] = timer
+        if start:
+            timer.start()
 
     def start(self):
         for timer in self._timers.values():
