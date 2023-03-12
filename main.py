@@ -1,10 +1,9 @@
-from src import MacMenuStatus, Config, WidgetBuilder
+from src import MacMenuStatus, Config
 
 
 def main():
     config = Config()
-    widgets = WidgetBuilder(config).build()
-    app = MacMenuStatus(config, widgets)
+    app = MacMenuStatus(config)
     app.run()
 
 

@@ -4,11 +4,12 @@ from src.config import Config
 from src.containers import TimerContainer, WidgetContainer
 from src.timers import UpdateTimer, ErrorFlipFlop
 from static import AppIcons
+from src.builders import WidgetBuilder
 
 
 class MacMenuStatus(App):
-    def __init__(self, config: 'Config', widgets: 'WidgetContainer'):
-        self.widgets = widgets
+    def __init__(self, config: 'Config'):
+        self.widgets = WidgetBuilder(config).build()
         self.config = config
         self.timers = TimerContainer(self)
         super(MacMenuStatus, self).__init__(name="MacMenuStatus", title='', icon=AppIcons.pending_logo_black)
