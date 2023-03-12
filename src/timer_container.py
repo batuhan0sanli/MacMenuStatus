@@ -15,6 +15,12 @@ class TimerContainer:
         if start:
             timer.start()
 
+    def remove(self, name: str) -> BaseTimer:
+        return self._timers.pop(name)
+
+    def get(self, name: str) -> BaseTimer | None:
+        return self._timers.get(name)
+
     def start(self):
         for timer in self._timers.values():
             timer.start()
@@ -27,7 +33,7 @@ class TimerContainer:
         return iter(self._timers.values())
 
     def __getitem__(self, item):
-        return self._timers[item]
+        return self.get(item)
 
     def __len__(self):
         return len(self._timers)
