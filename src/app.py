@@ -1,8 +1,7 @@
 from rumps import App
 
-from src.widget_container import WidgetContainer
 from src.config import Config
-from src.timer_container import TimerContainer
+from src.containers import TimerContainer, WidgetContainer
 from src.timers import UpdateTimer, ErrorFlipFlop
 from static import AppIcons
 
