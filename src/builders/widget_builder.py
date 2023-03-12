@@ -1,4 +1,4 @@
-from src.config import Config
+import src.app as app
 from src.containers import WidgetContainer
 from src.widgets import widget_list
 
@@ -6,17 +6,17 @@ __all__ = ['WidgetBuilder']
 
 
 class WidgetBuilder:
-    _built_widgets: 'Widgets' = WidgetContainer()
+    _built_widgets: 'WidgetContainer' = WidgetContainer()
 
-    def __init__(self, config: 'Config'):
-        self._config = config
+    def __init__(self, sender: 'app.MacMenuStatus'):
+        self._sender: 'app.MacMenuStatus' = sender
 
     @property
     def built_widgets(self):
         return self._built_widgets
 
-    def build(self) -> 'Widgets':
-        for widget in self._config.get('widgets'):
+    def build(self) -> 'WidgetContainer':
+        for widget in self._sender.config.get('widgets'):
             widget_obj = widget_list.get(widget.get('widget_type'))
             if not widget_obj:
                 print(f"Widget {widget.get('widget_type')} not found")

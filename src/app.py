@@ -1,16 +1,16 @@
 from rumps import App
 
+from src.builders import WidgetBuilder
 from src.config import Config
-from src.containers import TimerContainer, WidgetContainer
+from src.containers import TimerContainer
 from src.timers import UpdateTimer, ErrorFlipFlop
 from static import AppIcons
-from src.builders import WidgetBuilder
 
 
 class MacMenuStatus(App):
     def __init__(self, config: 'Config'):
-        self.widgets = WidgetBuilder(config).build()
         self.config = config
+        self.widgets = WidgetBuilder(self).build()
         self.timers = TimerContainer(self)
         super(MacMenuStatus, self).__init__(name="MacMenuStatus", title='', icon=AppIcons.pending_logo_black)
 
