@@ -1,7 +1,7 @@
 from typing import Dict
 
 from src.base import BaseWidget
-from src.base.status import GlobalStatusTypes
+from src.status import GlobalStatusTypes
 
 
 class WidgetContainer:

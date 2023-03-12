@@ -1,6 +1,7 @@
 import os
 
-from src.base import BaseWidget, Status
+from src.base import BaseWidget
+from src.status import Status
 
 
 class CheckDNS(BaseWidget):

@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 from rumps import MenuItem
 
-from src.base.status import Status
+from src.status import Status
 
 
 class BaseWidget(ABC):
