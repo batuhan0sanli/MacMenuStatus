@@ -1,9 +1,13 @@
-from rumps import Timer
 from abc import ABC, abstractmethod
+
+from rumps import Timer
+
 import src.app as app
 
 
 class BaseTimer(ABC):
+    name: str
+
     def __init__(self, sender: 'app.MacMenuStatus', interval: float):
         self.sender = sender
         self.interval = interval

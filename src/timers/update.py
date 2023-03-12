@@ -1,10 +1,11 @@
 from rumps import MenuItem, separator, quit_application
 
 from src.base import BaseTimer
-from src.timers.error_flip_flop import ErrorFlipFlop
 
 
 class UpdateTimer(BaseTimer):
+    name = 'Updater'
+
     def _callback(self, _=None):
         self.sender.widgets.update()
         self.update_flip_flop()
@@ -19,11 +20,7 @@ class UpdateTimer(BaseTimer):
 
     def update_flip_flop(self):
         if self.sender.widgets.menubar_status.name == 'ERROR':
-            if self.sender.icon_timer is None:
-                self.sender.icon_timer = ErrorFlipFlop(self.sender, 0.5)
-                self.sender.icon_timer.start()
+            self.sender.timers['ErrorFlipFlop'].start()
         else:
-            if self.sender.icon_timer is not None:
-                self.sender.icon_timer.stop()
-                self.sender.icon_timer = None
+            self.sender.timers['ErrorFlipFlop'].stop()
             self.sender.icon = self.sender.widgets.menubar_status.value
