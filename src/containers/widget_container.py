@@ -5,7 +5,7 @@ from src.base.status import StatusTypes, MenuBarStatusTypes
 
 
 class WidgetContainer:
-    def __init__(self):
+    def __init__(self, _=None):
         self._widgets: Dict[str, BaseWidget] = dict()
         self._global_status = MenuBarStatusTypes.UNKNOWN
 

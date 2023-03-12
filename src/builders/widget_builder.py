@@ -1,19 +1,13 @@
 import src.app as app
+from src.base import BaseContainerBuilder
 from src.containers import WidgetContainer
 from src.widgets import widget_list
 
 __all__ = ['WidgetBuilder']
 
 
-class WidgetBuilder:
-    _built_widgets: 'WidgetContainer' = WidgetContainer()
-
-    def __init__(self, sender: 'app.MacMenuStatus'):
-        self._sender: 'app.MacMenuStatus' = sender
-
-    @property
-    def built_widgets(self):
-        return self._built_widgets
+class WidgetBuilder(BaseContainerBuilder):
+    _container = WidgetContainer
 
     def build(self) -> 'WidgetContainer':
         for widget in self._sender.config.get('widgets'):
@@ -23,5 +17,5 @@ class WidgetBuilder:
                 continue
             widget_obj = widget_obj(settings=widget.get('config'))
             widget_obj.name = widget.get('name') or widget_obj.name
-            self._built_widgets.add(widget_obj)
-        return self._built_widgets
+            self.container_instance.add(widget_obj)
+        return self.container_instance
